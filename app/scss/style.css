@@ -58,13 +58,6 @@ body header .navigation .navigation-list .navigation-list-item {
 }
 
 .polygons .polygon:nth-child(6) {
-  -webkit-transform: rotate(-20deg);
-          transform: rotate(-20deg);
-  left: -10%;
-  top: 350%;
-}
-
-.polygons .polygon:nth-child(7) {
   left: 85%;
   top: 400%;
   -webkit-transform: rotate(30deg);
