@@ -1,5 +1,6 @@
 $main-font:'Saira Stencil One', cursive;
 $basic-font: 'Saira', sans-serif;
+$cursor: pointer;
 
 // colors
 $color-basic:rgba(20, 0, 70, 1);
@@ -19,6 +20,7 @@ $size-box-article:14px;
 $size-box-article-mobile:14px;
 
 $transition: .3s;
+
 
 // private classes
 %article-box{
@@ -48,7 +50,55 @@ $transition: .3s;
     flex-direction: $direction;
 }
 
+.polygons{
+    .polygon{
+    position: absolute;
+    left: 0;
+    right: 0;
+
+    &:nth-child(1){
+        width: 200px;
+        left: 90%;
+        top: 250px;
+        transform: rotate(45deg);
+    }
+    &:nth-child(2){
+        width: 200px;
+        transform: rotate(-20deg);
+        left: -5%;
+    }
+    &:nth-child(3){
+        width: 200px;
+        top: 250px;
+        left: 90%;
+        transform: rotate(20deg);
+    }
+    &:nth-child(4){
+        top: 200%;
+        transform: rotate(50deg);
+    }
+    &:nth-child(5){
+        top: 250%;
+        left: 90%;
+        transform: rotate(50deg);
+    }
+    &:nth-child(6){
+        transform: rotate(-20deg);
+        left: -10%;
+        top: 350%;
+
+    }
+    &:nth-child(7){
+        left: 85%;
+        top: 400%;
+        transform: rotate(30deg);
+    }
+    }
+    
+}
+
 body{
+    overflow-x: hidden;
     
     width: 100%;
     .wave{
@@ -139,6 +189,7 @@ body{
                        font-size: $size-menu-items;
                        &:hover{
                         color: white;
+                        transition: $transition;
                     }
                    } 
                    button{
@@ -146,7 +197,7 @@ body{
                        font-size: $size-menu-items;
                        padding: 10px;
                        background-color: transparent;
-                       
+                       cursor: $cursor;
                        text-decoration: none;
                        border: 1px solid white;
                        border-radius:7px;
@@ -154,6 +205,7 @@ body{
                        &:hover{
                            background-color: white;
                            color: $color-basic;
+                           transition: $transition;
                        }
                    }
                    
@@ -195,20 +247,32 @@ body{
                button{
                    font-size: $size-box-article-mobile;
                    font-family: $basic-font;
-                   background-color: $color-light;
-                   color: white;
+                   background-color: transparent;
+                   color: $color-light;
+                   border: 1px solid $color-light;
                    font-weight: 400;
                    padding: 8px 10px;
-                   border: inherit;
                    border-radius: 5px;
+                   cursor: $cursor;
+                   &:hover{
+                       background-color: $color-light;
+                       color: white;
+                       transition: $transition;
+                       
+                   }
                }
             }
         }
     }
     .article-section{
+        
         margin: 0 auto;
+        margin-top: -300px;
+        z-index: 9999;
         @include flex(space-between,column );
         .article-section--box{
+            z-index: 3;
+            padding: 2%;
             margin: 30px auto;
             @extend %article-box-mobile;
             @include flex(space-evenly,column );
@@ -225,18 +289,20 @@ body{
                 width: 150px;
                 margin: 0 auto;
             }
-            &:nth-child(1){
-                margin-top: -300px;
-                z-index: 9998;
+            // &:nth-child(1){
+            //     margin-top: -300px;
+            //     z-index: 9998;
                
-            }
+            // }
         }
     }
     .container{
+        
         padding: 2%;
         margin-top: 50px;
         
         .container-box{
+            text-align: center;
             div{
                 width: 100%;
                 text-align: center;
@@ -272,15 +338,25 @@ body{
                             margin-right: 10px;
                             width:20px;
                             vertical-align: middle;
+                            animation: triangle 2s infinite;
+                        }
+                        @keyframes triangle {
+                            from{transform: rotate(0);}
+                            to{transform: rotate(360deg);}  
                         }
                     }
                     
                 }
                 .container-info--link{
                     p{
+                        cursor: $cursor;
                         color: $color-links;
                         margin: 40px auto;
                         font-weight: 600;
+                        &:hover{
+                            color: $color-light;
+                            transition: $transition;
+                        }
                     }
                   
                 }
@@ -289,6 +365,8 @@ body{
         }
     }
 
+    
+
     footer{
         padding: 20px 80px;
         
@@ -296,12 +374,13 @@ body{
         margin-top: 100px;
         
         width: 100%;
-        height: 500px;
+        
         background-color: $color-basic;
         position: relative;
        
         .footer-wrapper{
             .footer-wrapper-box{
+                width: 200px;
                 
                 h3{
                     margin-top: 20px;
@@ -312,7 +391,7 @@ body{
                     font-size: 20px;
                 }
                 .footer-wrapper-box--divider{
-                    width: 80%;
+                    width: 100%;
                     height: 1px;
                     background-color: rgba(255, 255, 255, 0.5);
                     margin: 10px 0;
@@ -327,7 +406,9 @@ body{
                     line-height: 1.5;
                     &:hover{
                         color: white;
+                        transition: $transition;
                     }
+                    cursor: pointer;
                 }
                 a{
                     color: rgba(255, 255, 255, 0.815);
@@ -337,11 +418,16 @@ body{
                     margin-bottom: 20px;
                     &:hover{
                         color: white;
+                        transition: $transition;
                     }
                     img{
                         margin-right: 10px;
                         margin-top: 20px;
-                       
+                        opacity: 0.8;
+                        &:hover{
+                            opacity: 1;
+                            transition: $transition;
+                        }  
                     }
                 }
                 
@@ -352,61 +438,22 @@ body{
     
 }
 
-
-
-
-// @media (min-width:381px){
-//     body{
-//         min-width: 381px;
-        
-//         width: 100%;
-//         .wave{
-//             width: 769px;
-//         }
-//         header{
-//             max-width: 769px;
-//             width: 100%;
-//         }
-//         .article-section{
-//             padding: 0 50px;
-//             margin-top: -300px;
-//             width: 769px;
-//             @include flex(space-evenly,row );
-//             .article-section--box{
-//                 z-index: 9998;
-//                 &:nth-child(1){
-//                     margin-top: 30px;
-//                 }
-
-//             }
+@media screen and (min-width:768px) {
+    body{
+        min-width: 768px;
+        .article-section{
             
+            padding: 2%;
+            @include flex(space-between, row )
+        } 
 
-//         }
-//         .container{
-            
-//             .container-box{
-//                 width: 769px;
-//                 @include flex(space-evenly,row );
-//                 align-items: center;
-//                 padding-right: 100px;  
-//             }
-//         }
-//         footer{
-//             min-width: 380px;
-//             max-width: 769px;
-//             width: 100%;
-//             width: 769px;
-//             &::before{
-//                 border-left: 384px solid transparent;
-//                 border-right: 384px solid transparent;
-//             }
-//             .footer-wrapper{
-//                 @include flex(space-evenly, row-reverse );
-//                 .footer-wrapper-box{
-                    
-//                 }
-//             }
-//         }
+        footer{
+            .footer-wrapper{
+                @include flex(space-around, row )
+            }
+        }
+    }   
+    
+}
 
-//     }
-// }
+
