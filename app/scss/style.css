@@ -489,6 +489,20 @@ body footer .footer-wrapper .footer-wrapper-box a img:hover {
   transition: 0.3s;
 }
 
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #140046;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #c02020;
+}
+
 @media screen and (min-width: 768px) {
   body {
     min-width: 768px;
